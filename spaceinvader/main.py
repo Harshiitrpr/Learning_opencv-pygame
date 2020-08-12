@@ -48,7 +48,7 @@ for i in range(num_of_enemies):
     enemyImg.append(pygame.image.load('enemy.ico'))
     enemy_x.append(random.randint(0, 735))
     enemy_y.append(random.randint(50, 150))
-    enemy_x_change.append(1)
+    enemy_x_change.append(1 * X_FACTOR)
     enemy_y_change.append(40)
 
 # Bullet
@@ -56,7 +56,7 @@ bulletImg = pygame.image.load('bullet.png')
 bullet_x = 0
 bullet_y = 480
 bullet_x_change = 0
-bullet_y_change = 2.5
+bullet_y_change = 2.5 * X_FACTOR
 bullet_state = "ready"
 
 # Score
@@ -114,9 +114,9 @@ while(running):
     # if key is pressed
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_LEFT:
-            player_x_change = -1
+            player_x_change = -1 * X_FACTOR
         if event.key == pygame.K_RIGHT:
-            player_x_change = 1
+            player_x_change = 1 * X_FACTOR
         if event.key == pygame.K_SPACE:
             if bullet_state == 'ready':
                 bullet_sound = mixer.Sound('laser.wav')
@@ -154,10 +154,10 @@ while(running):
         
         enemy_x[i] += enemy_x_change[i]
         if enemy_x[i] <= 0:
-            enemy_x_change[i] = 2
+            enemy_x_change[i] = 2 * X_FACTOR
             enemy_y[i] += enemy_y_change[i]
         if enemy_x[i] > 736:
-            enemy_x_change[i] = -2
+            enemy_x_change[i] = -2 * X_FACTOR
             enemy_y[i] += enemy_y_change[i]
             
         # Collision
